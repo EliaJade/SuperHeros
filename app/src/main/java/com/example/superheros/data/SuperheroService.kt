@@ -1,4 +1,4 @@
-package com.example.superheros
+package com.example.superheros.data
 
 import retrofit2.http.GET
 import retrofit2.http.Path
