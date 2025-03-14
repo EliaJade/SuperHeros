@@ -2,8 +2,11 @@ package com.example.superheros.activities
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
@@ -37,37 +40,76 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerView)
 
-        adapter = SuperheroAdapter(superheroList)
+
+
+        adapter = SuperheroAdapter(superheroList) { position ->
+            //code that's excuted when clicking on superhero
+            val superhero = superheroList[position]
+
+            //TESTS THE CLICK:
+            //Toast.makeText(this, superhero.name, Toast.LENGTH_SHORT).show()
+
+        }
 
         recyclerView.adapter = adapter
 
-        recyclerView.layoutManager = GridLayoutManager (this, 2)
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
 
 
-        getRetrofit()
+        getRetrofit("a")
     }
 
-    fun getRetrofit() {
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_activities_main, menu)
+
+        val menuItem = menu?.findItem(R.id.action_search)
+        val searchView = menuItem?.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                //Log.i("MENU", "I pressed Enter")
+                getRetrofit(query)
+                return false
+            }
+
+            override fun onQueryTextChange(query: String): Boolean {
+
+                return true
+            }
+        })
+
+        return true
+    }
+
+    fun getRetrofit(query: String) {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://superheroapi.com/api/6ac2bcc51f5841c14aa2dbbc44cc5dae/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val service = retrofit.create(SuperheroService::class.java)
-
+   //}
+        //fun searchSuperheroesByName(query: String){
         CoroutineScope(Dispatchers.IO).launch {
-            val result = service.findSuperheroesByName("super")
+            try {
+
+
+            val result = service.findSuperheroesByName(query)
 
             superheroList = result.results
 
             CoroutineScope(Dispatchers.Main).launch {
                 adapter.items = superheroList
                 adapter.notifyDataSetChanged()
-
             }
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
             /*for (superhero in result.results) {
                 Log.i("API", "${superhero.id} -> ${superhero.name}")*/
-            }
         }
-
     }
+
+}

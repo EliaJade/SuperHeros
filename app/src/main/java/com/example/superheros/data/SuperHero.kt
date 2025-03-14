@@ -10,7 +10,8 @@ class SuperheroResponse (
 class SuperHero (
     val id: String,
     val name: String,
-    val image: Image
+    val image: Image,
+    val result: List<SuperHero>
 ){
 }
 
