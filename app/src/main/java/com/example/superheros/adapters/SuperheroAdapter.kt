@@ -26,6 +26,9 @@ class SuperheroAdapter(var items: List<SuperHero>, val onClick: (Int) -> Unit) :
     override fun onBindViewHolder(holder: SuperheroViewHolder, position: Int) {
         val superhero = items[position]
         holder.render(superhero)
+        holder.itemView.setOnClickListener {
+            onClick(position)
+        }
     }
 
 
@@ -37,7 +40,7 @@ class SuperheroViewHolder (view: View) : ViewHolder(view){
 
     fun render(superHero: SuperHero) {
         nameTextView.text = superHero.name
-        Picasso.get().load(superHero.image.url).resize(50, 50).centerCrop().into(pictureImageView)
+        Picasso.get().load(superHero.image.url).into(pictureImageView)
     }
 
 }
