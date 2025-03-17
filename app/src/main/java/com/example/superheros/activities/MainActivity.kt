@@ -24,14 +24,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var recyclerView: RecyclerView
+    //lateinit var recyclerView: RecyclerView
     lateinit var adapter: SuperheroAdapter
+    lateinit var binding: ActivityMainBinding
 
     var superheroList: List<SuperHero> = listOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(R.layout.binding_root)
 
         setContentView(R.layout.activity_main)
 

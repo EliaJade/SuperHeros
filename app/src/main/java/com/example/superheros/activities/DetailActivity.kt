@@ -34,14 +34,22 @@ class DetailActivity : AppCompatActivity() {
 
         val id = intent.getStringExtra("SUPERHERO_IO")!!
         getSuperheroById(id)
+        binding.navigationBar.setOnItemSelectedListener { menuItem ->
+            when (menuItem.itemId)
+
+        }
     }
+
+
 
 lateinit var superhero: SuperHero
     fun loadData() {
         Toast.makeText(this, superhero.name, Toast.LENGTH_SHORT)
-    }
-    //hay que rellenar la info del superheroe en pantalla
 
+    //hay que rellenar la info del superheroe en pantalla
+    Picasso.get().load(superhero.image.url)into(binding.pictureImageView.text)
+    binding.publisherTextView.text = superhero
+}
 
 
 fun getRetrofit(): SuperheroService {
