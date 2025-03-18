@@ -16,6 +16,7 @@ import com.example.superheros.R
 import com.example.superheros.adapters.SuperheroAdapter
 import com.example.superheros.data.SuperHero
 import com.example.superheros.data.SuperheroService
+import com.example.superheros.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,9 +36,9 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.binding_root)
+        setContentView(binding.root)
 
-        setContentView(R.layout.activity_main)
+        //setContentView(R.layout.activity_main)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        recyclerView = findViewById(R.id.recyclerView)
+        //recyclerView = findViewById(R.id.recyclerView)
 
 
 
@@ -62,9 +63,9 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        recyclerView.adapter = adapter
+        binding.recyclerView.adapter = adapter
 
-        recyclerView.layoutManager = GridLayoutManager(this, 2)
+        binding.recyclerView.layoutManager = GridLayoutManager(this, 2)
 
 
         searchSuperheroesByName("a")

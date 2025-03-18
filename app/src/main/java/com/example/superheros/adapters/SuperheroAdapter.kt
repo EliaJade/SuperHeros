@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso
 class SuperheroAdapter(var items: List<SuperHero>, val onClick: (Int) -> Unit) : Adapter<SuperheroViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperheroViewHolder {
-        val binding = LayoutInflater.from(parent.context).inflate(R.layout.item_superhero, parent, false)
+        val binding = ItemSuperheroBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return SuperheroViewHolder(binding)
     }
 

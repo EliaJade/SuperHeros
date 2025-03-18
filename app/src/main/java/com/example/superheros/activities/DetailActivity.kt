@@ -1,6 +1,7 @@
 package com.example.superheros.activities
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,9 @@ import com.example.superheros.R
 import com.example.superheros.adapters.SuperheroAdapter
 import com.example.superheros.data.SuperHero
 import com.example.superheros.data.SuperheroService
+import com.squareup.picasso.Picasso
+import com.example.superheros.databinding.ActivityDetailBinding
+//import com.example.superheros.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,13 +23,20 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class DetailActivity : AppCompatActivity() {
 
+    //lateinit var adapter: SuperheroAdapter
+    lateinit var binding: ActivityDetailBinding
 
+    lateinit var superhero: SuperHero
+
+    //var superheroList: List<SuperHero> = listOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_detail)
+
+        binding = ActivityDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -34,21 +45,61 @@ class DetailActivity : AppCompatActivity() {
 
         val id = intent.getStringExtra("SUPERHERO_IO")!!
         getSuperheroById(id)
-        binding.navigationBar.setOnItemSelectedListener { menuItem ->
-            when (menuItem.itemId)
 
+        binding.navigationBar.setOnItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.action_biography -> {
+                    binding.appearanceContent.root.visibility = View.GONE
+                    binding.statsContent.root.visibility = View.GONE
+                    binding.biographyContent.root.visibility = View.VISIBLE
+
+                }
+
+                R.id.action_stats -> {
+                    binding.appearanceContent.root.visibility = View.GONE
+                    binding.biographyContent.root.visibility = View.GONE
+                    binding.statsContent.root.visibility = View.VISIBLE
+                }
+
+                R.id.action_appearance -> {
+                    binding.statsContent.root.visibility = View.GONE
+                    binding.biographyContent.root.visibility = View.GONE
+                    binding.appearanceContent.root.visibility= View.VISIBLE
+                }
+
+            }
+            true
         }
+        binding.navigationBar.selectedItemId = R.id.action_biography
     }
 
 
 
-lateinit var superhero: SuperHero
+//lateinit var superhero: SuperHero
     fun loadData() {
-        Toast.makeText(this, superhero.name, Toast.LENGTH_SHORT)
+        //Toast.makeText(this, superhero.name, Toast.LENGTH_SHORT)
 
     //hay que rellenar la info del superheroe en pantalla
-    Picasso.get().load(superhero.image.url)into(binding.pictureImageView.text)
-    binding.publisherTextView.text = superhero
+    Picasso.get().load(superhero.image.url).into(binding.pictureImageView)
+
+    //BIOGRAPHY
+    binding.biographyContent.publisherTextView.text = superhero.biography.publisher
+    binding.biographyContent.placeOfBirthTextView.text = superhero.biography.placeOfBirth
+    binding.biographyContent.alignmentTextView.text = superhero.biography.alignment
+
+    binding.biographyContent.baseTextView.text = superhero.work.base
+    binding.biographyContent.occupationTextView.text = superhero.work.occupation
+
+    //APPEARANCE
+    binding.appearanceContent.raceTextView.text = superhero.appearance.race
+    binding.appearanceContent.genderTextView.text = superhero.appearance.gender
+    binding.appearanceContent.heightTextView.text = superhero.appearance.getHeightCm()
+    binding.appearanceContent.weightTextView.text = superhero.appearance.getWeightKg()
+    binding.appearanceContent.eyeColorTextView.text = superhero.appearance.eyeColor
+    binding.appearanceContent.hairColorTextView.text = superhero.appearance.hairColor
+
+    //STATS
+
 }
 
 

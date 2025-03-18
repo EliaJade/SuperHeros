@@ -19,7 +19,7 @@ class SuperHero (
     val image: Image,
     val work: Work,
     val appearance: Appearance,
-    val result: List<SuperHero>
+
 )
 class Biography (
     val publisher: String,
@@ -30,7 +30,7 @@ class Biography (
 )
 
 class Work (
-    val occupations: String,
+    val occupation: String,
     val base: String
 )
 
@@ -40,6 +40,7 @@ class Appearance (
     val hairColor: String,
     val height: List<String>,
     val weight: List<String>,
+    val race: String
 ) {
     fun getWeightKg(): String {
         return weight [1]

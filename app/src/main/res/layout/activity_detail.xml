@@ -29,39 +29,22 @@
             android:orientation="vertical">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/navigationBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:menu="@menu/menu_activities_main"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+            <include
+                android:id="@+id/biographyContent"
+                layout="@layout/content_biography"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+            <include
+                android:id="@+id/appearanceContent"
+                layout="@layout/content_appearance"/>
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textAlignment="textEnd"
-                        tools:text="Publisher:"
-                        android:layout_marginEnd="8dp"/>
-
-                    <TextView
-                        android:id="@+id/PublisherTextView"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        tools:text="Marvel"
-                        android:textStyle="bold"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
+            <include
+                android:id="@+id/statsContent"
+                layout="@layout/content_stats"/>
 
         </LinearLayout>
 
