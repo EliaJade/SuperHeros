@@ -43,7 +43,7 @@ class DetailActivity : AppCompatActivity() {
             insets
         }
 
-        val id = intent.getStringExtra("SUPERHERO_IO")!!
+        val id = intent.getStringExtra("SUPERHERO_ID")!!
         getSuperheroById(id)
 
         binding.navigationBar.setOnItemSelectedListener { menuItem ->
@@ -70,7 +70,7 @@ class DetailActivity : AppCompatActivity() {
             }
             true
         }
-        binding.navigationBar.selectedItemId = R.id.action_biography
+        binding.navigationBar.selectedItemId = R.id.action_stats
     }
 
 
@@ -99,7 +99,12 @@ class DetailActivity : AppCompatActivity() {
     binding.appearanceContent.hairColorTextView.text = superhero.appearance.hairColor
 
     //STATS
-
+    binding.statsContent.combatTextView.text = superhero.stats.combat
+    binding.statsContent.powerTextView.text = superhero.stats.power
+    binding.statsContent.speedTextView.text = superhero.stats.speed
+    binding.statsContent.strengthTextView.text = superhero.stats.strength
+    binding.statsContent.intelligenceTextView.text = superhero.stats.intelligence
+    binding.statsContent.durabilityTextView.text = superhero.stats.durability
 }
 
 

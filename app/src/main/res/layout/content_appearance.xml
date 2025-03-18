@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="textEnd"
-            tools:text="Race:"
+            android:text="Race:"
             android:layout_marginEnd="8dp"/>
 
         <TextView
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="textEnd"
-            tools:text="Gender:"
+            android:text="Gender:"
             android:layout_marginEnd="8dp"/>
 
         <TextView
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="textEnd"
-            tools:text="Hair Color:"
+            android:text="Hair Color:"
             android:layout_marginEnd="8dp"/>
 
         <TextView
@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="textEnd"
-            tools:text="Eye Color:"
+            android:text="Eye Color:"
             android:layout_marginEnd="8dp"/>
 
         <TextView
@@ -110,7 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="textEnd"
-            tools:text="Height:"
+            android:text="Height:"
             android:layout_marginEnd="8dp"/>
 
         <TextView
@@ -134,7 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="textEnd"
-            tools:text="Weight:"
+            android:text="Weight:"
             android:layout_marginEnd="8dp"/>
 
         <TextView

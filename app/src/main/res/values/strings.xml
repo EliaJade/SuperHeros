@@ -7,5 +7,17 @@
     <string name="action_stats">Stats</string>
     <string name="action_appearance">Appearance</string>
 
+    <string name="bio_publisher">Publisher:</string>
+    <string name="bio_place_of_birth">Place Of Birth:</string>
+    <string name="bio_alignment">Alignment:</string>
+    <string name="bio_occupation">Occupation:</string>
+    <string name="bio_base">Base:</string>
+
+    <string name="appearance_race">Race:</string>
+    <string name="appearance_gender">Gender:</string>
+    <string name="appearance_hair_color">Hair Color:</string>
+    <string name="appearance_eye_color">Eye</string>
+
+
 
 </resources>

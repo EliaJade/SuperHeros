@@ -19,6 +19,8 @@ class SuperHero (
     val image: Image,
     val work: Work,
     val appearance: Appearance,
+    @SerializedName("powerstats") val stats: Stats
+
 
 )
 class Biography (
@@ -33,6 +35,21 @@ class Work (
     val occupation: String,
     val base: String
 )
+
+class Stats (
+    val intelligence: String,
+    val strength: String,
+    val speed: String,
+    val durability: String,
+    val power: String,
+    val combat: String
+) /*{
+    fun getIntelligence(): String {
+        if (intelligence == null) {
+            return ("Unknown")
+        }
+    }
+}*/
 
 class Appearance (
     val gender: String,

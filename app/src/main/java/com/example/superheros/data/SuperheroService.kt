@@ -10,7 +10,7 @@ interface SuperheroService {
 
     suspend fun findSuperheroesByName(@Path("name") query: String): SuperheroResponse
 
-    @GET("{super-id}")
+    @GET("{superhero_id}")
     suspend fun findSuperheroesById(@Path("superhero_id") id: String) : SuperHero
 
 }
