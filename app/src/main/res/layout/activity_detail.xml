@@ -20,6 +20,11 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:cardCornerRadius="32dp"
+        android:layout_marginTop="-32dp"
+        android:layout_marginBottom="-32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pictureImageView">
 
@@ -32,11 +37,11 @@
                 android:id="@+id/navigationBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:menu="@menu/menu_activity_detail_navigation"/>
+                app:menu="@menu/menu_activity_detail_navigation" />
 
             <include
                 android:id="@+id/biographyContent"
-                layout="@layout/content_biography"/>
+                layout="@layout/content_biography" />
 
             <include
                 android:id="@+id/appearanceContent"

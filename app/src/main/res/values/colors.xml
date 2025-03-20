@@ -4,4 +4,8 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="text_background">#80897F7F</color>
+
+    <color name="alignment_color_good">#4CAF50</color>
+    <color name="alignment_color_bad">#F44336</color>
+    <color name="alignment_color_neutral">#2196F3</color>
 </resources>

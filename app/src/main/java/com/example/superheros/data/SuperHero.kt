@@ -2,6 +2,7 @@ package com.example.superheros.data
 
 import android.widget.GridLayout.Alignment
 import androidx.core.app.GrammaticalInflectionManagerCompat.GrammaticalGender
+import com.example.superheros.R
 import com.google.gson.annotations.SerializedName
 import java.util.concurrent.Flow.Publisher
 
@@ -22,7 +23,16 @@ class SuperHero (
     @SerializedName("powerstats") val stats: Stats
 
 
-)
+
+
+){  fun getColorAlignment (): Int {
+        return when (biography.alignment) {
+            "good" -> R.color.alignment_color_good
+            "bad" -> R.color.alignment_color_bad
+            else -> R.color.alignment_color_neutral
+        }
+    }
+}
 class Biography (
     val publisher: String,
     @SerializedName("full-name") val realName: String,
@@ -53,8 +63,8 @@ class Stats (
 
 class Appearance (
     val gender: String,
-    val eyeColor: String,
-    val hairColor: String,
+    @SerializedName("eye-color") val eyeColor: String,
+    @SerializedName("hair-color") val hairColor: String,
     val height: List<String>,
     val weight: List<String>,
     val race: String
